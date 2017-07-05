@@ -13,11 +13,18 @@ struct PasteBin: Codable {
     let likes: Int
     let liked_by_user: Bool
     let user: User
+    let categories: [Categorie]
 }
 
 struct User: Codable {
     let username: String
     let name: String
+    let nickname: String?
+}
+
+struct Categorie: Codable {
+    let id: Int
+    let title: String
 }
 
 let session = URLSession.shared
@@ -31,7 +38,7 @@ let task = session.dataTask(with: URLRequest(url: URL(string: "http://pastebin.c
         let pasteBin: [PasteBin]
         if let decoded = try? JSONDecoder().decode([PasteBin].self, from: data) {
             pasteBin = decoded
-            print(pasteBin[1].user)
+            print(pasteBin[0])
         }
     }
 })
