@@ -5,26 +5,44 @@ import PlaygroundSupport
 //Simple Pastebin Type
 
 struct PasteBin: Codable {
-    let id: String
-    let created_at: String
-    let width: Int
-    let height: Int
-    let color: String
-    let likes: Int
-    let liked_by_user: Bool
-    let user: User
-    let categories: [Categorie]
+    let id: String?
+    let created_at: String?
+    let width: Int?
+    let height: Int?
+    let color: String?
+    let likes: Int?
+    let liked_by_user: Bool?
+    let user: User?
+    let categories: [Categorie]?
+    let links: Link?
 }
 
 struct User: Codable {
-    let username: String
-    let name: String
+    let id: String?
+    let username: String?
+    let name: String?
     let nickname: String?
+    let links: Link?
+    let profile_image: ProfileImage?
+}
+
+struct ProfileImage: Codable {
+    let small: String?
+    let medium: String?
+    let large: String?
 }
 
 struct Categorie: Codable {
-    let id: Int
-    let title: String
+    let id: Int?
+    let title: String?
+    let photo_count: Int?
+}
+
+struct Link: Codable {
+    let photos: String?
+    let html: String?
+    let likes: String?
+    let download: String?
 }
 
 let session = URLSession.shared
